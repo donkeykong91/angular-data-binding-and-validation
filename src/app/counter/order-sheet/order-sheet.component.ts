@@ -50,4 +50,10 @@ export class OrderSheetComponent {
   onRemoveWeirdRequest(index) {
     this.weirdRequestsControls.removeAt(index);
   }
+  
+  onResetForm() {
+    this.orderSheetForm.reset({
+      customerName: 'justin'
+    });
+  }
 }
