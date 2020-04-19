@@ -14,6 +14,11 @@ export class OrderSheetComponent {
     this.buildForm();
   }
   
+  ngOnInit() {
+    let customerNameControl = this.orderSheetForm.get('customerName') as FormControl;
+    customerNameControl.setValue('Justin', { emitEvent: true });
+  }
+
   private buildForm() {
     this.orderSheetForm = this.formBuilder.group({
       customerName: this.formBuilder.control(null),
