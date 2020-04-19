@@ -16,6 +16,8 @@ export class OrderSheetComponent {
   private buildForm() {
     this.orderSheetForm = this.formBuilder.group({
       customerName: this.formBuilder.control(null),
+      size: this.formBuilder.control(null),
+      bread: this.formBuilder.control(null),
       specialtySandwich: this.formBuilder.control(null),
       otherNotes: this.formBuilder.control(null),
       meats: this.formBuilder.group({
@@ -32,7 +34,7 @@ export class OrderSheetComponent {
         veggieLettuce: this.formBuilder.control(null),
         veggieTomato: this.formBuilder.control(null),
         veggieMustard: this.formBuilder.control(null)
-      }),
+      })      
     });
   }
 }
