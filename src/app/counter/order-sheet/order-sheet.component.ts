@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'order-sheet',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['app/counter/order-sheet/order-sheet.component.css']
 })
 export class OrderSheetComponent {  
-  constructor() { }
+  orderSheetForm: FormGroup;
+  constructor(private formBuilder: FormBuilder) {
+    this.buildForm();
+   }
+  buildForm() {
+    this.orderSheetForm = this.formBuilder.group({});
+  }
 }
