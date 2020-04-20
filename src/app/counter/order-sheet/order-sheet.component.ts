@@ -56,4 +56,8 @@ export class OrderSheetComponent {
       customerName: 'justin'
     });
   }
+
+  onSubmitForm() {
+    console.log(this.orderSheetForm.value);
+  }
 }
