@@ -2,6 +2,17 @@
 <form novalidate [formGroup]="orderSheetForm" (ngSubmit)="onSubmitForm()">
   <section class="customer-name">
     <input formControlName="customerName" type="text" placeholder="Your Name">
+    <div *ngIf="customerNameControl.errors" class="errors">
+      <div *ngIf="customerNameControl.errors.required && (customerNameControl.touched || customerNameControl.dirty) ">
+        Required!
+      </div>
+      <div *ngIf="customerNameControl.errors.minlength">
+        Must be at least {{ customerNameControl.errors.minlength.requiredLength }} letters
+      </div>
+    </div>
+    <div *ngIf="showWelcomeMessage"class="welcome-back">
+      Welcome back {{ customerNameControl.value }}
+    </div>
   </section>
   <section class="size">
     <h1>Pick your size</h1>
@@ -44,6 +55,11 @@
           <label for="breadSourdoughRoll">Sourdough Roll</label>
         </li>
       </ul>
+      <div *ngIf="orderSheetForm.errors" class="errors">
+        <div *ngIf="orderSheetForm.errors.requiredwhen">
+          Let us know what kind of bread you like!
+        </div>
+      </div>
     </section>
     <section formGroupName="meats">
       <h1>The Meats</h1>
@@ -111,7 +127,7 @@
     <h1>Other Notes</h1>
     <textarea formControlName="otherNotes"></textarea>
   </section>
-  <button type="submit">Place Order</button>
+  <button type="submit" [disabled]="!orderSheetForm.valid">Place Order</button>
   <button type="button" (click)="onResetForm()">Reset</button>
 </form>
 <debug-panel [data]="orderSheetForm.value"></debug-panel>
